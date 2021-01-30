@@ -75,8 +75,18 @@ public final class ArrayBag<T> implements Bag<T> {
     }
 
     @Override
+    public int getFrecuencyOf(T elem) {
+        return 0;
+    }
+
+    @Override
     public void removeAll() {
 
+    }
+
+    @Override
+    public T[] toArray() {
+        return null;
     }
 
 }

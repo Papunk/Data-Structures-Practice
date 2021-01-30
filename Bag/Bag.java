@@ -10,5 +10,7 @@ public interface Bag<T> {
     void add(T newEntry);
     T remove();
     T remove(T elem);
+    int getFrecuencyOf(T elem);
     void removeAll();
+    T[] toArray();
 }
