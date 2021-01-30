@@ -5,3 +5,4 @@ public class MixedNumber extends Fraction{
         super(a, b);
     }
 }
+   
