@@ -4,10 +4,10 @@ public class Fraction {
     private int a;
     private int b;
 
-    public Fraction(int a, int b) {
+    public Fraction(int numerator, int denominator) {
         if (b == 0) return;
-        this.a = a;
-        this.b = b;
+        this.a = numerator;
+        this.b = denominator;
     }
 
 
