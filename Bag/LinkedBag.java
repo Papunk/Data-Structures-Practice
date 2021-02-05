@@ -33,6 +33,12 @@ public class LinkedBag<T> implements Bag<T> {
 
     @Override
     public boolean hasDuplicates() {
+        Node currentNode = firstNode;
+
+        while (currentNode != null) {
+            if (this.getFrecuencyOf(currentNode.data) >= 1) return true;
+            currentNode = currentNode.next;
+        }
         return false;
     }
 
@@ -44,17 +50,26 @@ public class LinkedBag<T> implements Bag<T> {
 
     @Override
     public T remove() {
-        return null;
+        T n = firstNode.data;
+        firstNode = firstNode.next;
+        return n;
     }
 
     @Override
     public T remove(T elem) {
-        return null;
+        return elem;
     }
 
     @Override
     public int getFrecuencyOf(T elem) {
-        return 0;
+        int tally = 0;
+        Node currentNode = firstNode;
+
+        while (currentNode != null) {
+            tally += currentNode.data.equals(elem)? 1:0;
+            currentNode = currentNode.next;
+        }
+        return tally;
     }
 
     @Override
