@@ -41,7 +41,10 @@ public final class ArrayBag<T> implements Bag<T> {
     }
 
     @Override
-    public boolean contains() {
+    public boolean contains(T elem) {
+        for (T item: bag) {
+            if (item.equals(elem)) return true;
+        }
         return false;
     }
 

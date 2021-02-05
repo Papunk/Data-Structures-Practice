@@ -5,7 +5,7 @@ public interface Bag<T> {
 
     int getCurrentSize();
     boolean isEmpty();
-    boolean contains();
+    boolean contains(T elem);
     boolean hasDuplicates();
     void add(T newEntry);
     T remove();
