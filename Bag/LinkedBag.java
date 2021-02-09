@@ -57,7 +57,25 @@ public class LinkedBag<T> implements Bag<T> {
 
     @Override
     public T remove(T elem) {
-        return elem;
+        //TODO test
+        Node previousNode = firstNode;
+        Node currentNode = firstNode.next;
+
+        if (previousNode.equals(elem)) {
+            previousNode = null;
+            return elem;
+        }
+
+        while (currentNode != null); {
+            if (currentNode.equals(elem)) {
+                previousNode.next = currentNode.next;
+                return elem;
+            }
+            previousNode = previousNode.next;
+            currentNode = currentNode.next;
+        }
+
+        return null;
     }
 
     @Override
