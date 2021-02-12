@@ -1,5 +1,6 @@
 package Bag;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -102,6 +103,43 @@ public final class ArrayBag<T> implements Bag<T> {
     @Override
     public T[] toArray() {
         return Arrays.copyOf(bag, numOfElems);
+    }
+
+    public ArrayBag<T> union(Bag<T> otherBag) {
+
+        ArrayBag union = new ArrayBag();
+
+        for (T elem: otherBag.toArray()) {
+            union.add(elem);
+        }
+        for (T elem: this.toArray()) {
+            union.add(elem);
+        }
+
+        return union;
+    }
+
+    public ArrayBag<T> intersection(Bag<T> otherBag) {
+
+        ArrayBag intersect = new ArrayBag();
+
+        for (T elem: otherBag.toArray()) {
+            if (this.contains(elem)) intersect.add(elem);
+        }
+
+        return intersect;
+    }
+
+    public ArrayBag<T> difference(Bag<T> otherBag) {
+        /**
+         * Idea:
+         *  go through each element.
+         *  consider the amount of times it is found in the other set
+         *  add it times the subtraction
+         *  i.e. repeat x times: add item to this set; where x = occurences of x here - occurences of x there (x>0)
+         */
+
+        return null;
     }
 
 }
