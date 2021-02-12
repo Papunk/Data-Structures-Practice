@@ -67,7 +67,7 @@ public class LinkedBag<T> implements Bag<T> {
         while (currentNode != null) {
             if (currentNode.data.equals(elem)) {
                 currentNode.data = firstNode.data;
-                firstNode = null;
+                firstNode = firstNode.next;
                 numOfElems--;
                 return elem;
             }
