@@ -50,28 +50,27 @@ public class LinkedBag<T> implements Bag<T> {
 
     @Override
     public T remove() {
+        if (firstNode == null) return null;
+
         T n = firstNode.data;
         firstNode = firstNode.next;
+        numOfElems--;
         return n;
     }
 
     @Override
     public T remove(T elem) {
-        //TODO test
-        Node previousNode = firstNode;
-        Node currentNode = firstNode.next;
+        if (numOfElems == 0) return null;
 
-        if (previousNode.equals(elem)) {
-            previousNode = null;
-            return elem;
-        }
+        Node currentNode = firstNode;
 
-        while (currentNode != null); {
-            if (currentNode.equals(elem)) {
-                previousNode.next = currentNode.next;
+        while (currentNode != null) {
+            if (currentNode.data.equals(elem)) {
+                currentNode.data = firstNode.data;
+                firstNode = null;
+                numOfElems--;
                 return elem;
             }
-            previousNode = previousNode.next;
             currentNode = currentNode.next;
         }
 
