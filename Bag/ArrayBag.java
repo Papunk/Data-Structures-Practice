@@ -46,8 +46,8 @@ public final class ArrayBag<T> implements Bag<T> {
 
     @Override
     public boolean contains(T elem) {
-        for (T item: bag) {
-            if (item.equals(elem)) return true;
+        for (T item: this.toArray()) {
+            if (item != null && item.equals(elem)) return true;
         }
         return false;
     }
@@ -91,7 +91,11 @@ public final class ArrayBag<T> implements Bag<T> {
 
     @Override
     public int getFrecuencyOf(T elem) {
-        return 0;
+        int tally = 0;
+        for (T item: this.toArray()) {
+            if (item.equals(elem)) tally++;
+        }
+        return tally;
     }
 
     @Override
@@ -139,7 +143,19 @@ public final class ArrayBag<T> implements Bag<T> {
          *  i.e. repeat x times: add item to this set; where x = occurences of x here - occurences of x there (x>0)
          */
 
-        return null;
+        ArrayBag dif = new ArrayBag();
+
+        for (T elem: this.toArray()) {
+            if (dif.contains(elem)) continue;
+            int n = this.getFrecuencyOf(elem) - otherBag.getFrecuencyOf(elem);
+            if (n > 0) {
+                for (int i = 0; i < n; i++) {
+                    dif.add(elem);
+                }
+            }
+        }
+
+        return dif;
     }
 
 }
