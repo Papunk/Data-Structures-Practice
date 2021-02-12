@@ -1,5 +1,8 @@
 package Bag;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public final class ArrayBag<T> implements Bag<T> {
 
     // variables
@@ -69,7 +72,15 @@ public final class ArrayBag<T> implements Bag<T> {
 
     @Override
     public T remove() {
-        return null;
+        Random r = new Random();
+        int num = r.nextInt(numOfElems);
+        T elem = bag[num];
+        for (int i = num; i < numOfElems; i++) {
+            if (i == bag.length - 1) bag[i] = null;
+            else bag[i] = bag[i + 1];
+        }
+        numOfElems--;
+        return elem;
     }
 
     @Override
@@ -84,12 +95,13 @@ public final class ArrayBag<T> implements Bag<T> {
 
     @Override
     public void removeAll() {
-
+        bag = (T[]) new Object[bag.length];
+        numOfElems = 0;
     }
 
     @Override
     public T[] toArray() {
-        return null;
+        return Arrays.copyOf(bag, numOfElems);
     }
 
 }
