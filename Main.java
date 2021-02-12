@@ -1,5 +1,6 @@
 import Bag.Bag;
 import Bag.ArrayBag;
+import Bag.LinkedBag;
 
 import java.util.Arrays;
 
@@ -21,6 +22,16 @@ public class Main {
 //        System.out.println();
 
 
+        Bag B1 = new LinkedBag();
+        B1.add(1);
+        B1.add(2);
+        B1.add(2);
+        B1.add(2);
+        B1.add(3);
+        B1.add(1);
+        B1.add(4);
+        B1.remove(1);
+        System.out.println(B1.getFrecuencyOf(1));
 
         ArrayBag<Integer> b = new ArrayBag<Integer>();
         b.add(2);
