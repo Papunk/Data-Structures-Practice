@@ -91,12 +91,8 @@ public class LinkedBag<T> implements Bag<T> {
 
     @Override
     public void removeAll() {
-        int index = 0;
-
-        while (index < numOfElems) {
-            firstNode = firstNode.next;
-            index++;
-        }
+        firstNode = null;
+        numOfElems = 0;
     }
 
     @Override
