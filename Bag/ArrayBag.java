@@ -135,13 +135,6 @@ public final class ArrayBag<T> implements Bag<T> {
     }
 
     public ArrayBag<T> difference(Bag<T> otherBag) {
-        /**
-         * Idea:
-         *  go through each element.
-         *  consider the amount of times it is found in the other set
-         *  add it times the subtraction
-         *  i.e. repeat x times: add item to this set; where x = occurences of x here - occurences of x there (x>0)
-         */
 
         ArrayBag dif = new ArrayBag();
 
