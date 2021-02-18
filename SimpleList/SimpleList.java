@@ -1,5 +1,7 @@
 package SimpleList;
 
-public interface SimpleList {
+public interface SimpleList<T> {
+
+
 
 }

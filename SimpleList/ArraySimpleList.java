@@ -1,4 +1,4 @@
 package SimpleList;
 
-public class ArraySimpleList implements SimpleList{
+public class ArraySimpleList<T> implements SimpleList<T> {
 }

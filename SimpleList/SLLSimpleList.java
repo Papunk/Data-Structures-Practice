@@ -1,4 +1,4 @@
 package SimpleList;
 
-public class SLLSimpleList implements SimpleList {
+public class SLLSimpleList<T> implements SimpleList<T> {
 }
