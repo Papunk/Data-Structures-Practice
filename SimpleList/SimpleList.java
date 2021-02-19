@@ -2,7 +2,7 @@ package SimpleList;
 
 public interface SimpleList<T> {
 
-    void add();
+    void add(T elem);
 
     T getFirst();
     T getLast();
