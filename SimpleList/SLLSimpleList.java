@@ -38,7 +38,7 @@ public class SLLSimpleList<T> implements SimpleList<T> {
     }
 
     @Override
-    public T removeAll(T elem) {
+    public T removeAllInstancesOf(T elem) {
         return null;
     }
 

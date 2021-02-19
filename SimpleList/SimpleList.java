@@ -11,7 +11,7 @@ public interface SimpleList<T> {
     T removeLast();
     T[] removeAll();
     T remove(T elem);
-    T removeAll(T elem);
+    T removeAllInstancesOf(T elem);
 
     T[] toArray();
 }
