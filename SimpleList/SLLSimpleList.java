@@ -35,12 +35,16 @@ public class SLLSimpleList<T> implements SimpleList<T> {
 
     @Override
     public T removeFirst() {
-        return null;
+        T data = first.data;
+        first = first.next;
+        return data;
     }
 
     @Override
     public T removeLast() {
-        return null;
+        T data = last.data;
+        last = null;
+        return data;
     }
 
     @Override
@@ -60,7 +64,13 @@ public class SLLSimpleList<T> implements SimpleList<T> {
 
     @Override
     public T[] toArray() {
-        return null;
+        T[] arr = (T[]) new Object[numOfElems];
+        Node current = first;
+        for (int i = 0; i < numOfElems; i++) {
+            arr[i] = current.data;
+            current = current.next;
+        }
+        return arr;
     }
 
     private class Node {
