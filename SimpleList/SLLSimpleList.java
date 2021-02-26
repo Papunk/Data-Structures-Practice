@@ -57,6 +57,14 @@ public class SLLSimpleList<T> implements SimpleList<T> {
 
     @Override
     public T remove(T elem) {
+        Node current = first;
+        while (current != null) {
+            if (current.data.equals(elem)) {
+                // TODO remove Node
+                return elem;
+            }
+            current = current.next;
+        }
         return null;
     }
 
