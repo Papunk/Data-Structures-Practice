@@ -49,7 +49,10 @@ public class SLLSimpleList<T> implements SimpleList<T> {
 
     @Override
     public T[] removeAll() {
-        return null;
+        T[] arr = this.toArray();
+        first = null;
+        last = null;
+        return arr;
     }
 
     @Override
