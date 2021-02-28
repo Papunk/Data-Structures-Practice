@@ -70,7 +70,10 @@ public class SLLSimpleList<T> implements SimpleList<T> {
 
     @Override
     public T removeAllInstancesOf(T elem) {
-        return null;
+
+        do {
+
+        } while (true);
     }
 
     @Override
