@@ -1,6 +1,11 @@
 package IndexList;
 
+import Node.GenericNode;
+
 public class LinkedIndexList<T> implements IndexList {
+
+    private GenericNode<T> first;
+    private int numberOfElements;
 
     @Override
     public Object getElementAt(int index) {

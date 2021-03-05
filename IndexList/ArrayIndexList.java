@@ -13,9 +13,7 @@ public class ArrayIndexList<T> implements IndexList {
 
     @Override
     public T getElementAt(int index) {
-        if (index >= numberOfElements) return null;
-
-        return null;
+        return (index < numberOfElements)? list[index] : null;
     }
 
     @Override
@@ -54,6 +52,6 @@ public class ArrayIndexList<T> implements IndexList {
 
     @Override
     public int getLength() {
-        return 0;
+        return numberOfElements;
     }
 }
