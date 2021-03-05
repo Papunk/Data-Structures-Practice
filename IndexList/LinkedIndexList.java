@@ -1,6 +1,6 @@
 package IndexList;
 
-public class LinkedIndexList implements IndexList {
+public class LinkedIndexList<T> implements IndexList {
 
     @Override
     public Object getElementAt(int index) {
@@ -18,12 +18,12 @@ public class LinkedIndexList implements IndexList {
     }
 
     @Override
-    public Object removeFirstInstanceOf(Object element) {
+    public T removeFirstInstanceOf(Object element) {
         return null;
     }
 
     @Override
-    public Object removeAllInstancesOf(Object element) {
+    public T removeAllInstancesOf(Object element) {
         return null;
     }
 
@@ -33,8 +33,8 @@ public class LinkedIndexList implements IndexList {
     }
 
     @Override
-    public Boolean contains(Object element) {
-        return null;
+    public boolean contains(Object element) {
+        return false;
     }
 
     @Override

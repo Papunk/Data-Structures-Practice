@@ -7,6 +7,6 @@ public interface IndexList<T> {
     T removeFirstInstanceOf(T element);
     T removeAllInstancesOf(T element);
     void clear();
-    Boolean contains(T element);
+    boolean contains(T element);
     int getLength();
 }
