@@ -1,4 +1,5 @@
 package IndexList;
 
-public class LinkedIndexList implements IndexList{
+public class LinkedIndexList implements IndexList {
+
 }
