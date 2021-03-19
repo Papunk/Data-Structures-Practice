@@ -1,6 +1,8 @@
 package IndexList;
 
-public class ArrayIndexList<T> implements IndexList {
+import java.util.Arrays;
+
+public class ArrayIndexList<T> implements IndexList<T> {
 
     private T[] list;
     private int numberOfElements;
@@ -17,22 +19,32 @@ public class ArrayIndexList<T> implements IndexList {
     }
 
     @Override
-    public void append(Object element) {
-
+    public void append(T element) {
+        if (numberOfElements == list.length) doubleCapacity();
+        list[numberOfElements] = element;
+        numberOfElements++;
     }
 
     @Override
-    public void insert(Object element, int atIndex) {
+    public void insert(T element, int atIndex) {
+        if (atIndex < 0 || atIndex > numberOfElements) return;
+        if (numberOfElements == list.length) doubleCapacity();
 
+        for (int i = numberOfElements - 1; i > atIndex; i--) {
+            list[i + 1] = list[i];
+        }
+
+        list[atIndex] = element;
+        numberOfElements++;
     }
 
     @Override
-    public T removeFirstInstanceOf(Object element) {
+    public T removeFirstInstanceOf(T element) {
         return null;
     }
 
     @Override
-    public T removeAllInstancesOf(Object element) {
+    public T removeAllInstancesOf(T element) {
         return null;
     }
 
@@ -54,4 +66,10 @@ public class ArrayIndexList<T> implements IndexList {
     public int getLength() {
         return numberOfElements;
     }
+
+    private void doubleCapacity() {
+        T[] newList = Arrays.copyOf(list, list.length * 2);
+        list = newList;
+    }
+
 }
