@@ -41,8 +41,27 @@ public class ArrayStack<T> implements Stack<T> {
         return size == 0;
     }
 
+    public void clear() {
+        while (!isEmpty()) {
+            pop();
+        }
+    }
+
     private void doubleCapacity() {
         list = Arrays.copyOf(list, list.length * 2);
+    }
+
+    public T[] toArray() {
+        T[] arr = (T[]) new Object[size];
+
+        for (int i = size - 1; i >= 0; i--) {
+            arr[i] = pop();
+        }
+        for (int i = 0; i < arr.length; i++) {
+            push(arr[i]);
+        }
+
+        return arr;
     }
 
 }

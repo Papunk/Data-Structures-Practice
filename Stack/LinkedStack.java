@@ -26,7 +26,7 @@ public class LinkedStack<T> implements Stack<T> {
     @Override
     public T pop() {
         if (isEmpty()) throw new EmptyStackException();
-        T etr = peek();
+        T etr = head.data;
         head = head.next;
         return etr;
     }
