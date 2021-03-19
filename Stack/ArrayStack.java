@@ -57,8 +57,8 @@ public class ArrayStack<T> implements Stack<T> {
         for (int i = size - 1; i >= 0; i--) {
             arr[i] = pop();
         }
-        for (int i = 0; i < arr.length; i++) {
-            push(arr[i]);
+        for (T e: arr) {
+            push(e);
         }
 
         return arr;

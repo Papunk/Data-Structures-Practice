@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayStack<Integer> a = new ArrayStack<Integer>();
+        LinkedStack<Integer> a = new LinkedStack<Integer>();
         for (int i = 0; i < 10; i++) {
             a.push(i);
         }
