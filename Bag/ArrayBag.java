@@ -1,9 +1,12 @@
 package Bag;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-public final class ArrayBag<T> implements Bag<T> {
+public final class ArrayBag<T> implements Bag<T>, Iterable<T> {
 
     // variables
 
@@ -150,4 +153,31 @@ public final class ArrayBag<T> implements Bag<T> {
         return dif;
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    @Override
+    public void forEach(Consumer<? super T> action) {
+
+    }
+
+    @Override
+    public Spliterator<T> spliterator() {
+        return null;
+    }
+
+    private class ArrayBagIterator<T> implements Iterator<T> {
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
+    }
 }
