@@ -10,14 +10,14 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayStack2<Integer> a = new ArrayStack2<Integer>();
+        ArrayBag<Integer> a = new ArrayBag<Integer>();
         for (int i = 0; i < 21; i++) {
-            a.push(i);
+            a.add(i);
         }
 
-        System.out.println(Arrays.toString(a.toArray()));
-        a.pop();
-        System.out.println(Arrays.toString(a.toArray()));
+       for (Integer i: a) {
+           System.out.println(i);
+       }
 
     }
 }

@@ -1,9 +1,6 @@
 package Bag;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
 
 public final class ArrayBag<T> implements Bag<T>, Iterable<T> {
@@ -155,29 +152,32 @@ public final class ArrayBag<T> implements Bag<T>, Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
-    }
-
-    @Override
-    public void forEach(Consumer<? super T> action) {
-
-    }
-
-    @Override
-    public Spliterator<T> spliterator() {
-        return null;
+        return new ArrayBagIterator<T>(this);
     }
 
     private class ArrayBagIterator<T> implements Iterator<T> {
 
+        private T[] bag;
+        private int size;
+        private int count = 0;
+
+        public ArrayBagIterator(ArrayBag<T> bag) {
+            this.bag = bag.toArray();
+            this.size = bag.getCurrentSize();
+        }
+
         @Override
         public boolean hasNext() {
-            return false;
+            return count < size;
         }
 
         @Override
         public T next() {
-            return null;
+            if (!hasNext()) return null;
+
+            T elem = bag[count];
+            count++;
+            return elem;
         }
     }
 }
