@@ -1,8 +1,9 @@
 package SimpleList;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
-public class ArraySimpleList<T> implements SimpleList<T> {
+public class ArraySimpleList<T> implements SimpleList<T>, Iterable<T> {
 
     private T[] list;
     private int numOfElems;
@@ -92,5 +93,10 @@ public class ArraySimpleList<T> implements SimpleList<T> {
     @Override
     public T[] toArray() {
         return Arrays.copyOf(list, numOfElems);
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
     }
 }
