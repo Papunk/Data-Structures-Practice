@@ -1,6 +1,8 @@
 package Bag;
 
-public class LinkedBag<T> implements Bag<T> {
+import java.util.Iterator;
+
+public class LinkedBag<T> implements Bag<T>, Iterable<T> {
 
     private Node firstNode;
     private int numOfElems;
@@ -108,6 +110,30 @@ public class LinkedBag<T> implements Bag<T> {
         }
 
         return arr;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    public static class LinkedBagIterator<T> implements Iterator<T> {
+
+        private T[] list;
+
+        public LinkedBagIterator(LinkedBag<T> bag) {
+            this.list = bag.toArray();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
     }
 
     private class Node {
