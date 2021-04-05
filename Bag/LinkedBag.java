@@ -117,22 +117,24 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
         return null;
     }
 
-    public static class LinkedBagIterator<T> implements Iterator<T> {
+    public class LinkedBagIterator<T> implements Iterator {
 
-        private T[] list;
+        private Node currentNode;
 
         public LinkedBagIterator(LinkedBag<T> bag) {
-            this.list = bag.toArray();
+            currentNode = (Node) firstNode;
         }
 
         @Override
         public boolean hasNext() {
-            return false;
+            return currentNode != null;
         }
 
         @Override
         public T next() {
-            return null;
+            T currentNodeData = (T) currentNode.data;
+            currentNode = currentNode.next;
+            return currentNodeData;
         }
     }
 
