@@ -3,6 +3,7 @@ package Deque;
 import java.util.EmptyStackException;
 
 public class DLLDeque<T> implements  Deque<T> {
+    
 
     DLNode<T> first;
     DLNode<T> last;
@@ -79,5 +80,4 @@ public class DLLDeque<T> implements  Deque<T> {
             this.data = data;
         }
     }
-
 }
