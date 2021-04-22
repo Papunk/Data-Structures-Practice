@@ -81,12 +81,15 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
     }
 
     private void removeNode(Node node) {
-        if (firstNode.equals(node)) firstNode = firstNode.next;
+        if (firstNode.equals(node)) {
+            firstNode = firstNode.next;
+            return;
+        }
 
         Node currentNode = firstNode;
         Node nextNode = currentNode.next;
 
-        while (nextNode != null || currentNode != null) {
+        while (nextNode != null && currentNode != null) {
             if (nextNode.equals(node)) {
                 currentNode.next = nextNode.next;
                 return;
@@ -131,15 +134,16 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new LinkedBagIterator<T>();
     }
 
     public class LinkedBagIterator<T> implements Iterator {
 
+        private Node lastNode;
         private Node currentNode;
         private boolean calledNext = false;
 
-        public LinkedBagIterator(LinkedBag<T> bag) {
+        public LinkedBagIterator() {
             currentNode = (Node) firstNode;
         }
 
@@ -153,15 +157,16 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
             if (!hasNext()) throw new NoSuchElementException();
 
             T currentNodeData = (T) currentNode.data;
-            calledNext = true;
+            lastNode = currentNode;
             currentNode = currentNode.next;
+            calledNext = true;
             return currentNodeData;
         }
 
         @Override
         public void remove() {
             if (!calledNext) throw new UnsupportedOperationException();
-
+            removeNode(lastNode);
             calledNext = false;
         }
     }
