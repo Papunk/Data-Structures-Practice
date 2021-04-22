@@ -1,6 +1,7 @@
 package Bag;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class LinkedBag<T> implements Bag<T>, Iterable<T> {
 
@@ -79,6 +80,22 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
         return null;
     }
 
+    private void removeNode(Node node) {
+        if (firstNode.equals(node)) firstNode = firstNode.next;
+
+        Node currentNode = firstNode;
+        Node nextNode = currentNode.next;
+
+        while (nextNode != null || currentNode != null) {
+            if (nextNode.equals(node)) {
+                currentNode.next = nextNode.next;
+                return;
+            }
+            currentNode = currentNode.next;
+            nextNode = nextNode.next;
+        }
+    }
+
     @Override
     public int getFrecuencyOf(T elem) {
         int tally = 0;
@@ -120,6 +137,7 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
     public class LinkedBagIterator<T> implements Iterator {
 
         private Node currentNode;
+        private boolean calledNext = false;
 
         public LinkedBagIterator(LinkedBag<T> bag) {
             currentNode = (Node) firstNode;
@@ -132,9 +150,19 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
 
         @Override
         public T next() {
+            if (!hasNext()) throw new NoSuchElementException();
+
             T currentNodeData = (T) currentNode.data;
+            calledNext = true;
             currentNode = currentNode.next;
             return currentNodeData;
+        }
+
+        @Override
+        public void remove() {
+            if (!calledNext) throw new UnsupportedOperationException();
+
+            calledNext = false;
         }
     }
 
