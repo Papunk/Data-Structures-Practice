@@ -7,6 +7,7 @@ import Stack.ArrayStack2;
 import Stack.LinkedStack;
 import java.util.Arrays;
 import java.util.Iterator;
+import Bag.LinkedBag.LinkedBagIterator;
 
 public class Main {
 
@@ -16,16 +17,18 @@ public class Main {
             bg.add(i);
         }
 
-       Iterator<Integer> iter = bg.iterator();
+        LinkedBagIterator iter = bg.iterator();
 
-       while (iter.hasNext()) {
-           iter.next();
-           iter.remove();
-       }
-
-        for (Integer i: bg) {
-            System.out.println(i);
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
         }
+
+        System.out.println("---");
+
+        while (iter.hasPrevious()) {
+            System.out.println(iter.previous());
+        }
+
 
     }
 }

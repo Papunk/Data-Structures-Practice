@@ -99,6 +99,24 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
         }
     }
 
+    private Node getElemBefore(Node node) {
+//        if (firstNode.equals(node)) {
+//            firstNode = firstNode.next;
+//        }
+
+        Node currentNode = firstNode;
+        Node nextNode = currentNode.next;
+
+        while (currentNode != null && nextNode != null) {
+            if (nextNode == node) {
+                return currentNode;
+            }
+            currentNode = currentNode.next;
+            nextNode = nextNode.next;
+        }
+        return null;
+    }
+
     @Override
     public int getFrecuencyOf(T elem) {
         int tally = 0;
@@ -132,12 +150,11 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
         return arr;
     }
 
-    @Override
-    public Iterator<T> iterator() {
-        return new LinkedBagIterator<T>();
+    public LinkedBagIterator iterator() {
+        return new LinkedBagIterator();
     }
 
-    public class LinkedBagIterator<T> implements Iterator {
+    public class LinkedBagIterator implements Iterator {
 
         private Node lastNode;
         private Node currentNode;
@@ -163,12 +180,24 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
             return currentNodeData;
         }
 
+        public T previous() {
+            if (!hasPrevious()) throw new UnsupportedOperationException();
+            currentNode = lastNode;
+            lastNode = getElemBefore(currentNode);
+            return currentNode.data;
+        }
+
+        public boolean hasPrevious() {
+            return currentNode != firstNode;
+        }
+
         @Override
         public void remove() {
             if (!calledNext) throw new UnsupportedOperationException();
             removeNode(lastNode);
             calledNext = false;
         }
+
     }
 
     private class Node {
