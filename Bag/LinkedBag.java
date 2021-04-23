@@ -100,10 +100,6 @@ public class LinkedBag<T> implements Bag<T>, Iterable<T> {
     }
 
     private Node getElemBefore(Node node) {
-//        if (firstNode.equals(node)) {
-//            firstNode = firstNode.next;
-//        }
-
         Node currentNode = firstNode;
         Node nextNode = currentNode.next;
 
