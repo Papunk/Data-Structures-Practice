@@ -46,7 +46,12 @@ public class IntegerLinkedSortedList implements IntegerSortedList {
         size++;
     }
 
-    @Override
+    public void recursiveAdd(int entry) {
+
+    }
+
+
+        @Override
     public void remove(int entry) {
 
     }
