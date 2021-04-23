@@ -54,4 +54,14 @@ public class LinkedStack<T> implements Stack<T> {
         return arr;
     }
 
+    // Superfluous to the class; practice problem
+    public int countNodes() {
+        return countNodes(head);
+    }
+
+    private int countNodes(GenericNode node) {
+        if (node == null) return 0;
+        return 1 + countNodes(node.next);
+    }
+
 }

@@ -97,10 +97,35 @@ public final class ArrayBag<T> implements Bag<T>, Iterable<T> {
         return tally;
     }
 
-    @Override
+    public int recursiveGetFrecuencyOf(T elem) {
+        return recursiveGetFrecuencyOf(elem, toArray());
+    }
+
+    private int recursiveGetFrecuencyOf(T elem, T[] arr) {
+        if (arr.length == 0) return 0;
+        int i = 0;
+        if (arr[0].equals(elem)) i++;
+        return i + recursiveGetFrecuencyOf(elem, Arrays.copyOfRange(arr, 1, arr.length));
+    }
+
+        @Override
     public void removeAll() {
         bag = (T[]) new Object[bag.length];
         numOfElems = 0;
+    }
+
+    public int getIndexOf(T elem) {
+        return getIndexOf(elem, toArray(), 0);
+    }
+
+    private int getIndexOf(T elem, T[] arr, int offset) {
+        if (arr.length == 0) return -1;
+        if (arr[0].equals(elem)) {
+            return offset;
+        }
+        int i = getIndexOf(elem, Arrays.copyOfRange(arr, 1, arr.length), offset + 1);
+        if (i < 0) return i;
+        else return offset;
     }
 
     @Override
